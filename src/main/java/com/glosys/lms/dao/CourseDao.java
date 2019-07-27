@@ -1,14 +1,15 @@
 package com.glosys.lms.dao;
 
 
-import com.glosys.lms.Course;
-import com.glosys.lms.dao.AbstractDao;
+import com.glosys.lms.entities.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class CourseDao extends AbstractDao<Course> {
@@ -33,18 +34,24 @@ public class CourseDao extends AbstractDao<Course> {
 
     }
 
-    public Course getCourseByCourseId(Integer courseId){
+    public Optional<Course> getCourseByCourseId(Integer courseId){
         try {
             entityManager.getTransaction().begin();
             TypedQuery<Course> query = entityManager.createQuery("SELECT course FROM Course course" +
                     " where course.id=:courseId",Course.class);
             query.setParameter("courseId",courseId);
             entityManager.getTransaction().commit();
-            return query.getSingleResult();
-        } catch (Exception e) {
-            entityManager.getTransaction().rollback();
+            return Optional.of(query.getSingleResult());
+        } catch (NoResultException e){
+            return Optional.empty();
+        }
+        catch (Exception e) {
+            if(entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
             throw new RuntimeException("can not get course for "+courseId,e);
         }
+
 
     }
 

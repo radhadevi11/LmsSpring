@@ -1,5 +1,7 @@
 package com.glosys.lms;
 
+import com.glosys.lms.Engine;
+import com.glosys.lms.Transmission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

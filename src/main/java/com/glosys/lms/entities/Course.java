@@ -1,10 +1,12 @@
-package com.glosys.lms;
+package com.glosys.lms.entities;
+
+import com.glosys.lms.entities.CourseCategory;
 
 import javax.persistence.*;
 
 @Table(name = "course")
 @Entity
-public class Course {
+public class Course implements LmsEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

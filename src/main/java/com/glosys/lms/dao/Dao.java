@@ -1,6 +1,8 @@
 package com.glosys.lms.dao;
 
-public interface Dao<T> {
-    void save(T t);
+import com.glosys.lms.entities.LmsEntity;
+
+public interface Dao<T extends LmsEntity> {
+    Integer save(T t);
 
 }

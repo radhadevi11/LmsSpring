@@ -1,8 +1,10 @@
 package com.glosys.lms.dao;
 
+import com.glosys.lms.entities.LmsEntity;
+
 import javax.persistence.EntityManager;
 
-public abstract class AbstractDao<T> implements Dao<T> {
+public abstract class AbstractDao<T extends LmsEntity> implements Dao<T> {
     protected EntityManager entityManager;
 
     public AbstractDao() {
@@ -14,18 +16,19 @@ public abstract class AbstractDao<T> implements Dao<T> {
     }
 
     @Override
-    public void save(T t){
+    public Integer save(T t){
 
         try {
             entityManager.getTransaction().begin();
             entityManager.persist(t);
             entityManager.getTransaction().commit();
+            return t.getId();
         }
         catch (Exception e){
             if(entityManager.getTransaction().isActive()){
                 entityManager.getTransaction().rollback();
             }
-            e.printStackTrace();
+           throw new RuntimeException("can not save entity",e);
         }
 
     }
