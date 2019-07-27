@@ -20,7 +20,7 @@ public class LmsApplicationTests {
 	public void contextLoads() {
 	}
 
-	@Test
+	/*@Test
 	public void testGetCourse() throws Exception {
 		mockMvc.perform(MockMvcRequestBuilders.post("/courses").content("{\"name\":\"Spring Boot\",\"courseCategory\":{\"id\":7,\"name\":\"Artificial Intelligence and Data Science \"}}"))
 				.andExpect(MockMvcResultMatchers.status().isOk())
@@ -34,8 +34,12 @@ public class LmsApplicationTests {
 				  Memory Management, Bit Fields, Error Handling, Interaction with Files, Doubly Linked List, Tree Operations,
 				  Data base Integration, SQL Operations, Standarad Template Libraries, Algorithms Complexity, Linux Scripting\r\n\r\n\r\n\r\n",
 				  "courseCategory":{"id":7,"name":"Artificial Intelligence and Data Science "},"workshopEligibility":false,
-				  "researchTrainingEligibility":true,"inplantTrainingEligibility":true,"corporateTrainingEligibility":true}*/
+				  "researchTrainingEligibility":true,"inplantTrainingEligibility":true,"corporateTrainingEligibility":true}
 
-	}
+				  }
+				  */
+
+
+
 
 }
