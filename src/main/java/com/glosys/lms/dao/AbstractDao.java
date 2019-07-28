@@ -28,7 +28,7 @@ public abstract class AbstractDao<T extends LmsEntity> implements Dao<T> {
             if(entityManager.getTransaction().isActive()){
                 entityManager.getTransaction().rollback();
             }
-           throw new RuntimeException("can not save entity",e);
+            throw new RuntimeException("can not save entity",e);
         }
 
     }

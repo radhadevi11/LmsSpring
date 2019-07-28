@@ -16,7 +16,7 @@ public class CourseService {
       this.courseDao = courseDao;
    }
 
-   public void saveCourse(Course course){ courseDao.save(course);}
+   public int saveCourse(Course course){ return courseDao.save(course);}
 
    public Optional<Course> getCourseByCourseId(int courseId){ return courseDao.getCourseByCourseId(courseId);}
 

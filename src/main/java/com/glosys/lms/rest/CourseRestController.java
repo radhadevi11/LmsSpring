@@ -27,8 +27,8 @@ public class CourseRestController {
 
     }
     @PostMapping( consumes = "application/json", produces = "application/json")
-    public void saveCourse(@RequestBody Course course){
-        courseService.saveCourse(course);
+    public SavedResource saveCourse(@RequestBody Course course){
+        return new SavedResource(courseService.saveCourse(course));
     }
 
 }
