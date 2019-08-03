@@ -20,8 +20,8 @@ public class CourseRestController {
 
     public boolean isExistingCourse(String courseCode){ return courseService.isExistingCourse(courseCode); }
 
-    @GetMapping
-    public Course getCourse(@RequestParam(value = "id") int courseId){
+    @GetMapping("/{id}")
+    public Course getCourse(@PathVariable(value = "id") int courseId){
         Optional<Course> courseOptional = courseService.getCourseByCourseId(courseId);
         return courseOptional.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "No course found"));
 

@@ -45,7 +45,7 @@ public class LmsApplicationTests {
 
 		SavedResource savedResource = objectMapper.readValue(courseId, SavedResource.class);
 		int savedCourseId = savedResource.getId();
-		mockMvc.perform(MockMvcRequestBuilders.get("/courses?id="+savedCourseId))
+		mockMvc.perform(MockMvcRequestBuilders.get("/courses/"+savedCourseId))
 				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andExpect(MockMvcResultMatchers.jsonPath("$.name",CoreMatchers.equalTo("Spring Boot")));
 	}
