@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -19,6 +20,11 @@ public class CourseRestController {
     }
 
     public boolean isExistingCourse(String courseCode){ return courseService.isExistingCourse(courseCode); }
+
+    @GetMapping
+    public List<Course> getAllCourses(){
+        return courseService.getAllCourses();
+    }
 
     @GetMapping("/{id}")
     public Course getCourse(@PathVariable(value = "id") int courseId){

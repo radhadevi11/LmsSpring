@@ -5,6 +5,7 @@ import com.glosys.lms.dao.CourseDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -19,6 +20,8 @@ public class CourseService {
    public int saveCourse(Course course){ return courseDao.save(course);}
 
    public Optional<Course> getCourseByCourseId(int courseId){ return courseDao.getCourseByCourseId(courseId);}
+
+   public List<Course> getAllCourses(){ return courseDao.getAllCourse();}
 
 
    public boolean isExistingCourse(String courseCode){ return courseDao.isExistingCourse(courseCode); }

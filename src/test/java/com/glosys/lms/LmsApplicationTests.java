@@ -49,12 +49,22 @@ public class LmsApplicationTests {
 				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andExpect(MockMvcResultMatchers.jsonPath("$.name",CoreMatchers.equalTo("Spring Boot")));
 	}
+
+	@Test
+	public void testSaveStudent() throws Exception {
+		ObjectMapper objectMapper = new ObjectMapper();
+		String studentName = "Spring";
+		String studentBody = mockMvc.perform(MockMvcRequestBuilders.post("/students")
+				.contentType("application/json")
+				.content("{\"firstName\":\"" + studentName + "\"}"))
+			.andExpect(MockMvcResultMatchers.status().isOk()).andReturn().getResponse().getContentAsString();
+		SavedResource studentResource = objectMapper.readValue(studentBody, SavedResource.class);
+		System.out.println("The student id is "+studentResource.getId());
+	}
+
+	@Test
+	public void testGetAll() throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders.get("/courses"))
+				.andExpect(MockMvcResultMatchers.status().isOk());
+	}
 }
-				/*{"id":3,"name":"DATA STRUCTURES AND APPLICATION DEVELOPMENT USING C","code":"AD15","syllabus":"C Environment,
-				 Basics of C, Decision Making, Loops, Arrays, Strings, Functions, Scope Rules, Structures, Unions, Pointers,
-				  Memory Management, Bit Fields, Error Handling, Interaction with Files, Doubly Linked List, Tree Operations,
-				  Data base Integration, SQL Operations, Standarad Template Libraries, Algorithms Complexity, Linux Scripting\r\n\r\n\r\n\r\n",
-				  "courseCategory":{"id":7,"name":"Artificial Intelligence and Data Science "},"workshopEligibility":false,
-				  "researchTrainingEligibility":true,"inplantTrainingEligibility":true,"corporateTrainingEligibility":true}
-				  }
-				  */
