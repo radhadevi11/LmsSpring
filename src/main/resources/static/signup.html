@@ -3,6 +3,7 @@
 <head>
 <title> sign up form
 </title>
+    <script src="student.js"></script>
 <style>
 body
 {
@@ -71,26 +72,26 @@ border-radius: 50px;
 </style>
 </head>
 <div class="wrap">
-<form action="/students" method="post">
+<form onsubmit="event.preventDefault();" >
 <h2> Sign up</h2>
-<input type="text" name="firstName" placeholder="First name" ><br>
-<input type="text" name="lastName" placeholder="Last name" ><br>
+<input type="text" id="firstName" placeholder="First name" ><br>
+<input type="text" id="lastName" placeholder="Last name" ><br>
 <br>
 Gender:<input type="radio" name="Gender" value="male">Male
         <input type="radio" name="Gender" value="female">Female
 <br>
 <br>
-<input type="email" name="email" autocomplete="off" placeholder="E-mail">
-<input type="text" name="pnumber" placeholder="Phone Number">
+<input type="email" id="email" autocomplete="off" placeholder="E-mail">
+<input type="text" id="pnumber" placeholder="Phone Number">
 
-<input type="text" name="collegeName" placeholder="College Name">
-<input type="password" name="password" placeholder="Password"> 
-<input type="password" name="psw-repeat" placeholder="Re-Enter password">
+<input type="text" id="collegeName" placeholder="College Name">
+<input type="password" id="password" placeholder="Password">
+<input type="password" id="psw-repeat" placeholder="Re-Enter password">
 <br>
 
 
 <br>
- <input type="submit" value="Submit" >
+    <button onclick="saveStudent()">Save</button>
 
 </form>
 </div>
